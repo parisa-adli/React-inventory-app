@@ -14,7 +14,11 @@ function App() {
       <div className="container max-w-screen-sm mx-auto px-3">
         <CategoryForm setCategories={setCategories} />
         <ProductForm categories={categories} setProducts={setProducts} />
-        <ProductList products={products} />
+        <ProductList
+          products={products}
+          setProducts={setProducts}
+          categories={categories}
+        />
       </div>
     </div>
   );
