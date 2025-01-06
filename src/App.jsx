@@ -71,24 +71,35 @@ function App() {
 
   return (
     <div className="bg-slate-800 min-h-screen">
-      <Navbar />
-      <div className="container max-w-screen-sm mx-auto px-3">
-        <CategoryForm setCategories={setCategories} />
-        <ProductForm categories={categories} setProducts={setProducts} />
-        <Filter
-          sort={sort}
-          searchValue={searchValue}
-          onSort={sortHandler}
-          onSearch={searchHandler}
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onSelectCategory={selectCategoryHandler}
-        />
-        <ProductList
-          products={filteredProducts}
-          setProducts={setProducts}
-          categories={categories}
-        />
+      <Navbar products={products} />
+      <div className="container max-w-screen-lg mx-auto px-3 grid grid-cols-1 md:grid-cols-2  gap-x-10">
+        <div>
+          <CategoryForm setCategories={setCategories} />
+          <ProductForm categories={categories} setProducts={setProducts} />
+        </div>
+        <div>
+          <div className="border-b border-slate-400 text-slate-400 font-bold pb-0.5 mb-4">
+            Filters
+          </div>
+          <Filter
+            sort={sort}
+            searchValue={searchValue}
+            onSort={sortHandler}
+            onSearch={searchHandler}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={selectCategoryHandler}
+          />
+          <div className="border-b border-slate-400 text-slate-300 text-lg font-bold pb-0.5 mt-8 mb-4">
+            Product List
+          </div>
+
+          <ProductList
+            products={filteredProducts}
+            setProducts={setProducts}
+            categories={categories}
+          />
+        </div>
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ function Filter({
           value={sort}
           onChange={onSort}
           id="sort-products"
-          className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+          className="bg-transparent min-w-40 rounded-xl border border-slate-500 text-slate-400"
         >
           <option className="bg-slate-500 text-slate-300" value="latest">
             latest
@@ -52,7 +52,7 @@ function Filter({
           value={selectedCategory}
           onChange={onSelectCategory}
           id="sort-products"
-          className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+          className="bg-transparent min-w-30 rounded-xl border border-slate-500 text-slate-400"
         >
           <option className="bg-slate-500 text-slate-300" value="">
             all
