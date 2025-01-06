@@ -12,7 +12,7 @@ function Filter({
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <label htmlFor="search" className="text-slate-400 text-lg">
+        <label htmlFor="search" className="text-secondary-400 text-lg">
           search
         </label>
         <input
@@ -21,11 +21,11 @@ function Filter({
           value={searchValue}
           onChange={onSearch}
           id="search"
-          className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+          className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400"
         />
       </div>
       <div className="flex items-center justify-between mb-4">
-        <label htmlFor="sort-products" className="text-slate-400 text-lg">
+        <label htmlFor="sort-products" className="text-secondary-400 text-lg">
           sort
         </label>
         <select
@@ -33,18 +33,24 @@ function Filter({
           value={sort}
           onChange={onSort}
           id="sort-products"
-          className="bg-transparent min-w-40 rounded-xl border border-slate-500 text-slate-400"
+          className="bg-transparent min-w-40 rounded-xl border border-secondary-500 text-secondary-400"
         >
-          <option className="bg-slate-500 text-slate-300" value="latest">
+          <option
+            className="bg-secondary-500 text-secondary-200"
+            value="latest"
+          >
             latest
           </option>
-          <option className="bg-slate-500 text-slate-300" value="earliest">
+          <option
+            className="bg-secondary-500 text-secondary-200"
+            value="earliest"
+          >
             earliest
           </option>
         </select>
       </div>
       <div className="flex items-center justify-between mb-4">
-        <label htmlFor="sort-products" className="text-slate-400 text-lg">
+        <label htmlFor="sort-products" className="text-secondary-400 text-lg">
           category
         </label>
         <select
@@ -52,14 +58,14 @@ function Filter({
           value={selectedCategory}
           onChange={onSelectCategory}
           id="sort-products"
-          className="bg-transparent min-w-30 rounded-xl border border-slate-500 text-slate-400"
+          className="bg-transparent min-w-30 rounded-xl border border-secondary-500 text-secondary-400"
         >
-          <option className="bg-slate-500 text-slate-300" value="">
+          <option className="bg-secondary-500 text-secondary-200" value="">
             all
           </option>
           {categories.map((category) => (
             <option
-              className="bg-slate-500 text-slate-300"
+              className="bg-secondary-500 text-secondary-200"
               value={category.id}
               key={category.id}
             >

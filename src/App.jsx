@@ -4,6 +4,7 @@ import CategoryForm from "./components/CategoryForm";
 import ProductForm from "./components/ProductForm";
 import ProductList from "./components/ProductList";
 import Filter from "./components/Filter";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -70,38 +71,40 @@ function App() {
   }, [products]);
 
   return (
-    <div className="bg-slate-800 min-h-screen">
-      <Navbar products={products} />
-      <div className="container max-w-screen-lg mx-auto px-3 grid grid-cols-1 md:grid-cols-2  gap-x-10">
-        <div>
-          <CategoryForm setCategories={setCategories} />
-          <ProductForm categories={categories} setProducts={setProducts} />
-        </div>
-        <div>
-          <div className="border-b border-slate-400 text-slate-400 font-bold pb-0.5 mb-4">
-            Filters
+    <ThemeProvider>
+      <div className="bg-secondary-800 min-h-screen">
+        <Navbar products={products} />
+        <div className="container max-w-screen-lg mx-auto px-3 grid grid-cols-1 md:grid-cols-2  gap-x-10">
+          <div>
+            <CategoryForm setCategories={setCategories} />
+            <ProductForm categories={categories} setProducts={setProducts} />
           </div>
-          <Filter
-            sort={sort}
-            searchValue={searchValue}
-            onSort={sortHandler}
-            onSearch={searchHandler}
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelectCategory={selectCategoryHandler}
-          />
-          <div className="border-b border-slate-400 text-slate-300 text-lg font-bold pb-0.5 mt-8 mb-4">
-            Product List
-          </div>
+          <div>
+            <div className="border-b border-secondary-400 text-secondary-400 font-bold pb-0.5 mb-4">
+              Filters
+            </div>
+            <Filter
+              sort={sort}
+              searchValue={searchValue}
+              onSort={sortHandler}
+              onSearch={searchHandler}
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onSelectCategory={selectCategoryHandler}
+            />
+            <div className="border-b border-secondary-400 text-secondary-300 text-lg font-bold pb-0.5 mt-8 mb-4">
+              Product List
+            </div>
 
-          <ProductList
-            products={filteredProducts}
-            setProducts={setProducts}
-            categories={categories}
-          />
+            <ProductList
+              products={filteredProducts}
+              setProducts={setProducts}
+              categories={categories}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

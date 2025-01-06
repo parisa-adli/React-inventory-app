@@ -11,9 +11,9 @@ function ProductForm({ categories, setProducts }) {
     const { name, value } = e.target;
     setProductFormData({ ...productFormData, [name]: value });
   };
-
   const addNewProduct = (e) => {
     e.preventDefault();
+
     const newProduct = {
       ...productFormData,
       createdAt: new Date().toISOString(),
@@ -25,14 +25,14 @@ function ProductForm({ categories, setProducts }) {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-xl text-slate-300 text-bold mb-3">
+        <h2 className="text-xl text-secondary-300 text-bold mb-3">
           Add New Product
         </h2>
-        <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+        <form className="bg-secondary-700 p-4 rounded-xl flex flex-col gap-y-4">
           <div>
             <label
               htmlFor="product-title"
-              className="text-slate-400 mb-1 block"
+              className="text-secondary-400 mb-1 block"
             >
               Product title
             </label>
@@ -43,13 +43,13 @@ function ProductForm({ categories, setProducts }) {
               onChange={changeHandler}
               id="title"
               placeholder="product-title..."
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400"
             />
           </div>
           <div>
             <label
               htmlFor="product-quantity"
-              className="text-slate-400 mb-1 block"
+              className="text-secondary-400 mb-1 block"
             >
               Quantity
             </label>
@@ -60,13 +60,13 @@ function ProductForm({ categories, setProducts }) {
               onChange={changeHandler}
               id="quantity"
               placeholder="quantity..."
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400"
             />
           </div>
           <div>
             <label
               htmlFor="product-category"
-              className="text-slate-400 mb-1 block"
+              className="text-secondary-400 mb-1 block"
             >
               Quantity
             </label>
@@ -75,15 +75,15 @@ function ProductForm({ categories, setProducts }) {
               value={productFormData.categoryId}
               onChange={changeHandler}
               id="category"
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+              className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400 w-full"
             >
-              <option className="bg-slate-500 text-slate-300" value="">
+              <option className="bg-secondary-500 text-secondary-200" value="">
                 select a category
               </option>
               {categories.map((category) => (
                 <option
                   key={category.id}
-                  className="bg-slate-500 text-slate-300"
+                  className="bg-secondary-500 text-secondary-200"
                   value={category.id}
                 >
                   {category.title}
@@ -94,7 +94,12 @@ function ProductForm({ categories, setProducts }) {
           <div className="flex items-center justify-center">
             <button
               id="add-new-product"
-              className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2 "
+              className="flex-1 bg-secondary-500 text-secondary-200 rounded-xl py-2 "
+              disabled={
+                !productFormData.title ||
+                !productFormData.quantity ||
+                !productFormData.categoryId
+              }
               onClick={addNewProduct}
             >
               Add New Product

@@ -26,14 +26,14 @@ function CategoryForm({ setCategories }) {
   return (
     <div>
       <div className={`mb-6 ${!isShow && "hidden"}`} id="category-wrapper">
-        <h2 className="text-xl text-slate-300 text-bold mb-3">
+        <h2 className="text-xl text-secondary-300 text-bold mb-3">
           Add New Category
         </h2>
-        <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4 transition-all duration-300 ease-out">
+        <form className="bg-secondary-700 p-4 rounded-xl flex flex-col gap-y-4 transition-all duration-300 ease-out">
           <div>
             <label
               htmlFor="category-title"
-              className="text-slate-400 mb-1 block"
+              className="text-secondary-400 mb-1 block"
             >
               Title
             </label>
@@ -43,12 +43,12 @@ function CategoryForm({ setCategories }) {
               value={categoryFormData.title}
               onChange={changeHandler}
               id="title"
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400"
             />
           </div>
           <div>
             <label
-              className="block mb-1 text-slate-400"
+              className="block mb-1 text-secondary-400"
               htmlFor="category-desc"
             >
               description
@@ -58,13 +58,13 @@ function CategoryForm({ setCategories }) {
               value={categoryFormData.description}
               onChange={changeHandler}
               id="description"
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+              className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400 w-full"
             />
           </div>
           <div className="flex items-center justify-center gap-x-4">
             <button
               id="cancel-category"
-              className="flex-1 border border-slate-400 text-slate-400 rounded-xl py-2"
+              className="flex-1 border border-secondary-400 text-secondary-400 rounded-xl py-2"
               onClick={(e) => {
                 e.preventDefault();
                 setIsShow(false);
@@ -74,7 +74,7 @@ function CategoryForm({ setCategories }) {
             </button>
             <button
               id="add-new-category"
-              className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+              className="flex-1 bg-secondary-500 text-secondary-200 rounded-xl py-2"
               onClick={addNewCategoryHandler}
             >
               Add
@@ -84,7 +84,7 @@ function CategoryForm({ setCategories }) {
       </div>
       <button
         id="toggle-add-category"
-        className={`text-slate-600 text-lg font-medium mb-4 ${
+        className={`text-secondary-600 text-lg font-medium mb-4 ${
           isShow && "hidden"
         }`}
         onClick={() => setIsShow((prev) => !prev)}
