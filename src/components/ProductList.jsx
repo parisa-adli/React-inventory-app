@@ -1,4 +1,10 @@
-function ProductList({ products, setProducts, categories }) {
+import { useData } from "../context/DataProvider";
+import { useFilter } from "../context/FilterProvider";
+
+function ProductList() {
+  const { setProducts, categories } = useData();
+  const { filteredProducts } = useFilter();
+
   const deleteProduct = (productId) => {
     const filteredProducts = products.filter(
       (product) => +product.id !== +productId
@@ -8,8 +14,11 @@ function ProductList({ products, setProducts, categories }) {
 
   return (
     <div>
+      <div className="border-b border-secondary-400 text-secondary-300 text-lg font-bold pb-0.5 mt-8 mb-4">
+        Product List
+      </div>
       <div className="overflow-x-auto">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
             id="products-list"

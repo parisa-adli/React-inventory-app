@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useData } from "../context/DataProvider";
 
-function ProductForm({ categories, setProducts }) {
+function ProductForm() {
+  const { categories, setProducts } = useData();
   const [productFormData, setProductFormData] = useState({
     title: "",
     quantity: "",

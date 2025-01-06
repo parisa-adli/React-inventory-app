@@ -1,16 +1,24 @@
 import { useState } from "react";
+import { useFilter } from "../context/FilterProvider";
+import { useData } from "../context/DataProvider";
 
-function Filter({
-  sort,
-  searchValue,
-  onSort,
-  onSearch,
-  categories,
-  selectedCategory,
-  onSelectCategory,
-}) {
+function Filter() {
+  const {
+    sort,
+    setSort,
+    searchValue,
+    setSearchValue,
+    selectedCategory,
+    setSelectedCategory,
+  } = useFilter();
+
+  const { categories } = useData();
+
   return (
     <div>
+      <div className="border-b border-secondary-400 text-secondary-400 font-bold pb-0.5 mb-4">
+        Filters
+      </div>
       <div className="flex items-center justify-between mb-4">
         <label htmlFor="search" className="text-secondary-400 text-lg">
           search
@@ -19,7 +27,7 @@ function Filter({
           type="text"
           name="search"
           value={searchValue}
-          onChange={onSearch}
+          onChange={(e) => setSearchValue(e.target.value.trim().toLowerCase())}
           id="search"
           className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400"
         />
@@ -31,7 +39,7 @@ function Filter({
         <select
           name="sort-products"
           value={sort}
-          onChange={onSort}
+          onChange={(e) => setSort(e.target.value)}
           id="sort-products"
           className="bg-transparent min-w-40 rounded-xl border border-secondary-500 text-secondary-400"
         >
@@ -56,7 +64,7 @@ function Filter({
         <select
           name="sort-products"
           value={selectedCategory}
-          onChange={onSelectCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
           id="sort-products"
           className="bg-transparent min-w-30 rounded-xl border border-secondary-500 text-secondary-400"
         >

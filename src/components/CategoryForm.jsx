@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useData } from "../context/DataProvider";
 
-function CategoryForm({ setCategories }) {
+function CategoryForm() {
+  const { setCategories } = useData();
   const [isShow, setIsShow] = useState(false);
   const [categoryFormData, setCategoryFormData] = useState({
     title: "",

@@ -1,6 +1,8 @@
+import { useData } from "../context/DataProvider";
 import ThemeModeToggle from "./ThemeModeToggle";
 
-function Navbar({ products }) {
+function Navbar() {
+  const { products } = useData();
   return (
     <div className="h-12 flex items-center justify-center gap-x-3 bg-secondary-600 text-secondary-200 font-bold mb-6">
       <ThemeModeToggle />
