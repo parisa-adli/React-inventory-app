@@ -45,6 +45,7 @@ function CategoryForm() {
               value={categoryFormData.title}
               onChange={changeHandler}
               id="title"
+              placeholder="category-title"
               className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400"
             />
           </div>
@@ -60,6 +61,7 @@ function CategoryForm() {
               value={categoryFormData.description}
               onChange={changeHandler}
               id="description"
+              placeholder="category-description"
               className="bg-transparent rounded-xl border border-secondary-500 text-secondary-400 w-full"
             />
           </div>
@@ -77,6 +79,9 @@ function CategoryForm() {
             <button
               id="add-new-category"
               className="flex-1 bg-secondary-500 text-secondary-200 rounded-xl py-2"
+              disabled={
+                !categoryFormData.title || !categoryFormData.description
+              }
               onClick={addNewCategoryHandler}
             >
               Add

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useData } from "../context/DataProvider";
 import { useFilter } from "../context/FilterProvider";
 
@@ -24,7 +25,9 @@ function ProductList() {
             id="products-list"
             className="flex items-center justify-between mb-2 w-full min-w-[400px]"
           >
-            <span className="text-secondary-400">{product.title}</span>
+            <Link to={ `product/${product.id}`}>
+              <span className="text-secondary-400">{product.title}</span>
+            </Link>
             <div className="flex items-center gap-x-3">
               <span className="text-secondary-400">
                 {new Date(product.createdAt).toLocaleDateString("en-GB", {
