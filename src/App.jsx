@@ -17,9 +17,8 @@ function App() {
       <FilterProvider>
         <ThemeProvider>
           <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route path=":id" element={<SingleProduct />} />
-            </Route>
+            <Route path="/" element={<AppLayout />} />
+            <Route path=":id" element={<SingleProduct />} />
           </Routes>
         </ThemeProvider>
       </FilterProvider>

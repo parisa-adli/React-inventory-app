@@ -7,10 +7,10 @@ function ProductList() {
   const { filteredProducts } = useFilter();
 
   const deleteProduct = (productId) => {
-    const filteredProducts = products.filter(
+    const filtersProducts = filteredProducts.filter(
       (product) => +product.id !== +productId
     );
-    setProducts(filteredProducts);
+    setProducts(filtersProducts);
   };
 
   return (
@@ -25,7 +25,7 @@ function ProductList() {
             id="products-list"
             className="flex items-center justify-between mb-2 w-full min-w-[400px]"
           >
-            <Link to={`/${product.id}`}>
+            <Link to={`${product.id}`}>
               <span className="text-secondary-400">{product.title}</span>
             </Link>
             <div className="flex items-center gap-x-3">
