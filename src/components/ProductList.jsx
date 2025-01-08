@@ -25,7 +25,7 @@ function ProductList() {
             id="products-list"
             className="flex items-center justify-between mb-2 w-full min-w-[400px]"
           >
-            <Link to={ `product/${product.id}`}>
+            <Link to={`/${product.id}`}>
               <span className="text-secondary-400">{product.title}</span>
             </Link>
             <div className="flex items-center gap-x-3">

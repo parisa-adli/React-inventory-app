@@ -7,9 +7,9 @@ import Filter from "./components/Filter";
 import { ThemeProvider } from "./context/ThemeProvider";
 import DataProvider from "./context/DataProvider";
 import FilterProvider from "./context/FilterProvider";
-import { Route, Routes } from "react-router-dom";
-import SingleProduct from "./components/SingleProduct";
+import { Route, Routes, Outlet } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
+import SingleProduct from "./components/SingleProduct";
 
 function App() {
   return (
