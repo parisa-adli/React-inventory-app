@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "../context/DataProvider";
 
 function ProductForm() {
-  const { categories, setProducts } = useData();
+  const { categories, setProducts, editObj, saveEdited } = useData();
   const [productFormData, setProductFormData] = useState({
     title: "",
     quantity: "",
     categoryId: "",
   });
+  const { id: editId } = editObj || {};
+  const isEditSession = Boolean(editId);
+
+  useEffect(() => {
+    if (isEditSession) {
+      setProductFormData(editObj);
+    }
+  }, [editObj]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setProductFormData({ ...productFormData, [name]: value });
   };
+
   const addNewProduct = (e) => {
     e.preventDefault();
 
@@ -21,9 +30,14 @@ function ProductForm() {
       createdAt: new Date().toISOString(),
       id: new Date().getTime(),
     };
-    setProducts((prevProducts) => [...prevProducts, newProduct]);
+    if (isEditSession) {
+      saveEdited(productFormData);
+    } else {
+      setProducts((prevProducts) => [...prevProducts, newProduct]);
+    }
     setProductFormData({ title: "", quantity: "", categoryId: "" });
   };
+
   return (
     <div>
       <div className="mb-6">
@@ -104,7 +118,7 @@ function ProductForm() {
               }
               onClick={addNewProduct}
             >
-              Add New Product
+              {isEditSession ? "Edit Product" : "Add New Product"}
             </button>
           </div>
         </form>

@@ -5,6 +5,7 @@ const DataContext = createContext();
 export default function DataProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [editObj, setEditObj] = useState(null);
 
   useEffect(() => {
     const savedCategories =
@@ -26,9 +27,31 @@ export default function DataProvider({ children }) {
     }
   }, [products]);
 
+  const editProduct = (productId) => {
+    const selectedProduct = products.find((p) => p.id === productId);
+    setEditObj(selectedProduct);
+  };
+
+  const saveEdited = (updatedProduct) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.id === updatedProduct.id ? updatedProduct : product
+      )
+    );
+    setEditObj(null);
+  };
+
   return (
     <DataContext.Provider
-      value={{ categories, setCategories, products, setProducts }}
+      value={{
+        categories,
+        setCategories,
+        products,
+        setProducts,
+        editObj,
+        editProduct,
+        saveEdited,
+      }}
     >
       {children}
     </DataContext.Provider>

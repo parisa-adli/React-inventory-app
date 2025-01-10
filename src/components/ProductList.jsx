@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { useData } from "../context/DataProvider";
 import { useFilter } from "../context/FilterProvider";
+import { FiEdit } from "react-icons/fi";
+import { useState } from "react";
+import ProductForm from "./ProductForm";
 
 function ProductList() {
-  const { setProducts, categories } = useData();
+  const { setProducts, categories, editProduct } = useData();
   const { filteredProducts } = useFilter();
+  const [editObj, setEditObj] = useState(null);
 
   const deleteProduct = (productId) => {
     const filtersProducts = filteredProducts.filter(
@@ -47,6 +51,12 @@ function ProductList() {
                 {product.quantity}
               </span>
               <button
+                className="border border-secondary-400 text-secondary-400 rounded-full  p-1.5"
+                onClick={() => editProduct(product.id)}
+              >
+                <FiEdit />
+              </button>
+              <button
                 className="border border-red-400 text-red-400 rounded-2xl py-0.5 px-2"
                 onClick={() => deleteProduct(product.id)}
               >
@@ -56,7 +66,6 @@ function ProductList() {
           </div>
         ))}
       </div>
-
       <div className="h-20"></div>
     </div>
   );
